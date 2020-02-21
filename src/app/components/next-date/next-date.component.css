@@ -1,0 +1,38 @@
+table, th , td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+
+  table, h2 {
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 50%;
+  }
+
+  button {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 2%;
+  }
+
+  .zero {
+    background-color: red;
+  }
+
+  .medium {
+    background-color: orange;
+  }
+
+  .high {
+    background-color: greenyellow ;
+  }

@@ -1,0 +1,26 @@
+
+<div class="container">
+  <h3>Make an appointment</h3>
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit(appointmentForm.value)">
+    <div class="form-group">
+      <label for="licensePlate">
+        License plate
+      </label>
+      <input id="licensePlate" type="text" formControlName="licensePlate">
+    </div>
+  
+    <div class="form-group">
+      <label for="company">
+        Company name
+      </label>
+      <input id="company" type="text" formControlName="company">
+    </div>
+  <button  type="submit">Submit</button>
+</form>
+  <button  (click)="toCalendar()">Back</button>
+</div>
+
+  
+
+
+  

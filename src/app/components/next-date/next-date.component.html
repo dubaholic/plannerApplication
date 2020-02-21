@@ -1,0 +1,18 @@
+<h2>Slots available on {{currentDate | date:'dd-MM-yyyy'}}</h2>
+<button (click)="yesterday()" >{{yesterdayDate | date:'dd-MM-yyyy'}}</button>
+<button (click)="tommorrow()" >{{tommorrowDate | date:'dd-MM-yyyy'}}</button>
+<table>
+  <tr>
+    <th>Timeslot</th>
+    <th>Number of slots</th>
+    <th>Reserve</th>
+  </tr>
+    <tr *ngFor="let item of timeslots">
+      <td>{{item.timePeriod}}</td>
+      <td *ngIf="item.slots >=4" class="high">{{item.slots}}</td>
+      <td *ngIf="item.slots <4 && item.slots >0" class="medium">{{item.slots}}</td>
+      <td *ngIf="item.slots == 0" class="zero">{{item.slots}}</td>
+      <!-- <td>{{item.slots}}</td> -->
+      <td><button [disabled]="item.slots == 0" (click)="reserveAppointment(item.id)">Reserve</button></td>
+    </tr>
+</table>

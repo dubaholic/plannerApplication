@@ -1,0 +1,12 @@
+<h2>Appointments on {{currentDate | date:'dd-MM-yyyy'}} from {{timeslot}}</h2>
+<table>
+  <tr>
+    <th>license Plate</th>
+    <th>Company</th>
+  </tr>
+    <tr *ngFor="let item of appointments">
+      <td>{{item.licensePlate}}</td>
+      <td>{{item.company}}</td>
+    </tr>
+</table>
+<button  (click)="toCalendar()">Back</button>

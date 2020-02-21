@@ -1,0 +1,32 @@
+[
+    {
+        "id":0,
+        "timePeriod": "8:30 - 9:00",
+        "slots": 5
+    },
+    {
+        "id":1,
+        "timePeriod": "9:00 - 9:30",
+        "slots": 5
+    },
+    {
+        "id":2,
+        "timePeriod": "9:30 - 10:00",
+        "slots": 5
+    },
+    {
+        "id":3,
+        "timePeriod": "10:00 - 10:30",
+        "slots": 5
+    },
+    {
+        "id":4,
+        "timePeriod": "10:30 - 11:00",
+        "slots": 5
+    },
+    {
+        "id":5,
+        "timePeriod": "11:00 - 11:30",
+        "slots": 5
+    }
+]
