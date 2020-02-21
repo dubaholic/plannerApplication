@@ -58,6 +58,10 @@ export class CalendarComponent implements OnInit {
     this.router.navigateByUrl('/nextdate');
   }
 
+
+  addSlots(id: any) {
+    this.router.navigateByUrl('/addtimeslot/'+id);
+  }
   // tommorrow() {
   //   this.currentDate.setDate(this.currentDate.getDate() + 1);
   //   var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');

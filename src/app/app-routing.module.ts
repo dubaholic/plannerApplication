@@ -4,6 +4,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { AppointmentdetailsComponent } from './components/appointmentdetails/appointmentdetails.component';
 import { NextDateComponent } from './components/next-date/next-date.component';
+import { AddtimeslotComponent } from './components/addtimeslot/addtimeslot.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'nextdate', component: NextDateComponent},
   // { path: 'nextdate/:date', component: NextDateComponent },
   {path: 'nextdate/:id', component: AppointmentComponent},
+  {path: 'addtimeslot/:id', component: AddtimeslotComponent},
   // { path: 'nextdate/:date/:id', component: AppointmentComponent },
 ];
 

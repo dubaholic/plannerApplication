@@ -10,6 +10,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentdetailsComponent } from './components/appointmentdetails/appointmentdetails.component';
 import { NextDateComponent } from './components/next-date/next-date.component';
+import { AddtimeslotComponent } from './components/addtimeslot/addtimeslot.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NextDateComponent } from './components/next-date/next-date.component';
     CalendarComponent,
     AppointmentComponent,
     AppointmentdetailsComponent,
-    NextDateComponent
+    NextDateComponent,
+    AddtimeslotComponent
   ],
   imports: [
     BrowserModule,
