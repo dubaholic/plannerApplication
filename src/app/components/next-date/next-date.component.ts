@@ -104,5 +104,6 @@ export class NextDateComponent implements OnInit {
     var username = sessionStorage.getItem("username");
     this.router.navigateByUrl('/myschedule/'+username);
   }
+  
 
 }
