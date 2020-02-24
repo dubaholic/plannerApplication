@@ -1,13 +1,20 @@
 <table>
-    <tr>
-      <th>Timeslot</th>
-      <th>Number of slots</th>
-    </tr>
-      <tr>
-        <td>{{timeslot.timePeriod}}</td>
-        <td>{{timeslot.slots}}</td>
-      </tr>
-  </table>
+  <tr>
+    <th>Timeslot</th>
+    <th>Number of slots</th>
+  </tr>
+  <tr>
+    <td>{{timeslot.timePeriod}}</td>
+    <td>{{timeslot.slots}}</td>
+  </tr>
+</table>
 
-      <input id="numberOfSlots" type="text">
-  <button  type="submit">Submit</button>
+<form [formGroup]="timeslotForm" (ngSubmit)="onSubmit(timeslotForm.value)">
+  <div class="form-group">
+    <label for="amount">
+      Number of slots
+    </label>
+    <input id="amount" type="number" formControlName="amount">
+  </div>
+<button type="submit">Submit</button>
+</form>

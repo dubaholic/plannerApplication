@@ -58,7 +58,6 @@ export class CalendarComponent implements OnInit {
     this.router.navigateByUrl('/nextdate');
   }
 
-
   addSlots(id: any) {
     this.router.navigateByUrl('/addtimeslot/'+id);
   }

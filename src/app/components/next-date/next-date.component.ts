@@ -81,4 +81,9 @@ export class NextDateComponent implements OnInit {
     }
   }
 
+  addSlots(id: any) {
+    var nextDate = "nextdate"
+    this.router.navigateByUrl('/addtimeslot/'+ nextDate + "/" +id);
+  }
+
 }

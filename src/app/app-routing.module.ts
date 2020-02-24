@@ -16,6 +16,7 @@ const routes: Routes = [
   // { path: 'nextdate/:date', component: NextDateComponent },
   {path: 'nextdate/:id', component: AppointmentComponent},
   {path: 'addtimeslot/:id', component: AddtimeslotComponent},
+  {path: 'addtimeslot/:nextdate/:id', component: AddtimeslotComponent},
   // { path: 'nextdate/:date/:id', component: AppointmentComponent },
 ];
 
