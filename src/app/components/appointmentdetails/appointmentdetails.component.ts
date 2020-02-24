@@ -22,10 +22,12 @@ export class AppointmentdetailsComponent implements OnInit {
   timeslots: any;
   timeslot:any;
   passedDate: any;
+  currentLocation; any;
 
   ngOnInit() {
     // this.currentDate = new Date();
     this.id = this.route.snapshot.paramMap.get("id");
+    
     // this.passedDate = this.route.snapshot.paramMap.get("date");
     // const day = this.passedDate.substr(0,2);
     // const month = this.passedDate.substr(3,2) -1;
@@ -48,7 +50,9 @@ export class AppointmentdetailsComponent implements OnInit {
     //     this.timeslot = timeslot.timePeriod;
     //   }
     // }
-    this.appointments = JSON.parse(sessionStorage.getItem(this.id));
+    this.currentLocation = sessionStorage.getItem("location");
+    console.log(this.currentLocation);
+    this.appointments = JSON.parse(sessionStorage.getItem(this.currentLocation +this.id));
     console.log(this.appointments);
   }
 

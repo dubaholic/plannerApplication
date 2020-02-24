@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentdetailsComponent } from './components/appointmentdetails/appointmentdetails.component';
@@ -30,7 +30,8 @@ import { MyscheduleComponent } from './components/myschedule/myschedule.componen
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
-    HttpClientModule 
+    HttpClientModule,
+    FormsModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,7 +19,7 @@ export class AppointmentComponent implements OnInit {
   appointmentDetails: any = [];
   timeslotsNextDay: any = [];
   pipe = new DatePipe('en-US');
-
+  currentLocation: any;
   personalAppointments: any = [];
 
   constructor(
@@ -34,42 +34,52 @@ export class AppointmentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.timeslots = JSON.parse(sessionStorage.getItem("timeslots"));
+    this.currentLocation = sessionStorage.getItem("location");
+    this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation + "timeslots"));
     this.id = this.route.snapshot.paramMap.get("id");
     if (this.router.url == '/nextdate/' + this.id) {
-      this.timeslots = JSON.parse(sessionStorage.getItem("timeslotsNextDay"));
+      this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation + "timeslotsNextDay"));
     }
-    this.timeslotsNextDay = JSON.parse(sessionStorage.getItem("timeslotsNextDay"));
+    this.timeslotsNextDay = JSON.parse(sessionStorage.getItem(this.currentLocation + "timeslotsNextDay"));
 
   }
 
   onSubmit(appointmentData) {
     var username = sessionStorage.getItem("username");
+    this.currentLocation = sessionStorage.getItem("location");
     this.id = this.route.snapshot.paramMap.get("id");
+    this.personalAppointments = JSON.parse(sessionStorage.getItem(username + this.currentLocation));
     this.appointmentDetails = [];
-    this.appointments = JSON.parse(sessionStorage.getItem(this.id));
+    this.appointments = JSON.parse(sessionStorage.getItem(this.currentLocation + this.id));
     if(this.appointments == null) {
       this.appointments = [];
     }
+    if(this.currentLocation == null) {
+      this.currentLocation = "location1";
+    }
+    if(this.personalAppointments == null) {
+      this.personalAppointments = [];
+    }
     for (let timeslot of this.timeslots) {
+      console.log(this.timeslots);
       if (timeslot.id == this.id) {
         timeslot.slots--;
         this.timeslots[this.id] = timeslot;
         if (this.router.url == '/nextdate/' + this.id) {
-          sessionStorage.setItem("timeslotsNextDay", JSON.stringify(this.timeslots));
+          sessionStorage.setItem(this.currentLocation + "timeslotsNextDay", JSON.stringify(this.timeslots));
           this.appointments.push(appointmentData);
           this.personalAppointments.push(timeslot.timePeriod);
           console.log(this.appointments);
-          sessionStorage.setItem(this.id, JSON.stringify(this.appointments));
-          sessionStorage.setItem(username, JSON.stringify(this.personalAppointments));
+          sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
+          sessionStorage.setItem(username + this.currentLocation, JSON.stringify(this.personalAppointments));
           this.router.navigateByUrl('/nextdate');
         } else {
           this.appointments.push(appointmentData);
           this.personalAppointments.push(timeslot.timePeriod);
           console.log(this.appointments);
-          sessionStorage.setItem(this.id, JSON.stringify(this.appointments));
-          sessionStorage.setItem("timeslots", JSON.stringify(this.timeslots));
-          sessionStorage.setItem(username, JSON.stringify(this.personalAppointments));
+          sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
+          sessionStorage.setItem(this.currentLocation + "timeslots", JSON.stringify(this.timeslots));
+          sessionStorage.setItem(username + this.currentLocation, JSON.stringify(this.personalAppointments));
           this.router.navigateByUrl('/calendar');
         }
       }

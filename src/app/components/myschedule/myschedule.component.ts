@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-myschedule',
@@ -9,16 +9,22 @@ import { ActivatedRoute } from '@angular/router';
 export class MyscheduleComponent implements OnInit {
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   timeslots: any = [];
   username: any;
+  currentLocation: any;
 
   ngOnInit() {
     this.username = this.route.snapshot.paramMap.get("username");
-    this.timeslots = JSON.parse(sessionStorage.getItem(this.username));
+    this.currentLocation = sessionStorage.getItem("location");
+    this.timeslots = JSON.parse(sessionStorage.getItem(this.username + this.currentLocation));
     console.log(this.timeslots);
   }
 
+  toCalendar() {
+    this.router.navigateByUrl('/calendar');
+  }
 }

@@ -13,29 +13,38 @@ export class CalendarComponent implements OnInit {
 
   pipe = new DatePipe('en-US');
 
+
   constructor(
     private timeSloteService: TimeslotsService,
     private route: ActivatedRoute,
     private router: Router) { }
 
+  location: any =[];
   timeslots: any[] = [];
   currentDate: any;
   tommorrowsDate: any;
-  id:any = [];
+  id: any = [];
   backgroundColor;
+  currentLocation: any;
+  locationlist: any = [
+    "location1",
+    "location2",
+    "location3",
+    "location4",
+  ]
 
   ngOnInit() {
-      this.id = this.route.snapshot.paramMap.get("id");
-      this.currentDate = new Date();
-      this.tommorrowsDate = new Date();
-      this.currentDate.setDate(this.currentDate.getDate() + 1);
-      sessionStorage.setItem('currentDate', this.currentDate);
-      this.tommorrowsDate.setDate(this.currentDate.getDate() + 1);
-      this.getAllTimeslots();
-    }
+    this.id = this.route.snapshot.paramMap.get("id");
+    this.currentDate = new Date();
+    this.tommorrowsDate = new Date();
+    this.currentDate.setDate(this.currentDate.getDate() + 1);
+    sessionStorage.setItem('currentDate', this.currentDate);
+    this.tommorrowsDate.setDate(this.currentDate.getDate() + 1);
+    this.getAllTimeslots();
+  }
 
   reserveAppointment(id: any) {
-    console.log(this.currentDate);
+    console.log(this.pipe.transform(this.currentDate, 'shortDate'));
     this.router.navigateByUrl('/calendar/' + id);
   }
 
@@ -44,12 +53,16 @@ export class CalendarComponent implements OnInit {
   }
 
   getAllTimeslots() {
-    this.timeslots = JSON.parse(sessionStorage.getItem("timeslots"));
+    this.currentLocation = sessionStorage.getItem("location");
+    if(this.currentLocation == null) {
+      this.currentLocation = 'location1';
+    }
+    this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation + "timeslots"));
     if (this.timeslots == null) {
       this.timeslots = [];
       this.timeSloteService.getJSON().subscribe(data => {
         this.timeslots = data;
-        sessionStorage.setItem("timeslots", JSON.stringify(this.timeslots));
+        sessionStorage.setItem(this.currentLocation + "timeslots", JSON.stringify(this.timeslots));
       })
     }
   }
@@ -60,12 +73,17 @@ export class CalendarComponent implements OnInit {
   }
 
   addSlots(id: any) {
-    this.router.navigateByUrl('/addtimeslot/'+id);
+    this.router.navigateByUrl('/addtimeslot/' + id);
+  }
+
+  mySchedule() {
+    var username = sessionStorage.getItem("username");
+    this.router.navigateByUrl('/myschedule/' + username);
   }
   
-  mySchedule(){
-    var username = sessionStorage.getItem("username");
-    this.router.navigateByUrl('/myschedule/'+username);
+  onChange() {
+    sessionStorage.setItem("location", this.location);
+    this.getAllTimeslots();
   }
   // tommorrow() {
   //   this.currentDate.setDate(this.currentDate.getDate() + 1);

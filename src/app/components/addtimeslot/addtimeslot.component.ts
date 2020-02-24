@@ -26,12 +26,13 @@ export class AddtimeslotComponent implements OnInit {
   id: any
   timeslot: any = [];
   amount: number;
-
+  currentLocation: any;
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
     var routing = this.route.snapshot.paramMap.get("nextdate");
+    this.currentLocation = sessionStorage.getItem("location")
     if(routing != null) {
-      this.timeslots = JSON.parse(sessionStorage.getItem('timeslotsNextDay'));
+      this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation +'timeslotsNextDay'));
       for (let timeslot of this.timeslots) {
         if (timeslot.id == this.id) {
           this.timeslot = timeslot;
@@ -39,7 +40,7 @@ export class AddtimeslotComponent implements OnInit {
         }
       }
     } else {
-      this.timeslots = JSON.parse(sessionStorage.getItem("timeslots"));
+      this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation +"timeslots"));
       for (let timeslot of this.timeslots) {
         if (timeslot.id == this.id) {
           this.timeslot = timeslot;
@@ -56,27 +57,27 @@ export class AddtimeslotComponent implements OnInit {
     var routing = this.route.snapshot.paramMap.get("nextdate");
     console.log(routing);
     if (routing != null) {
-      this.timeslots = JSON.parse(sessionStorage.getItem('timeslotsNextDay'))
+      this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation +'timeslotsNextDay'))
       for (let timeslot of this.timeslots) {
         if (timeslot.id == this.id) {
           this.amount = appointmentData.amount;
           var total = timeslot.slots + this.amount;
           timeslot.slots = total;
           this.timeslots[this.id] = timeslot;
-          sessionStorage.setItem("timeslotsNextDay", JSON.stringify(this.timeslots));
+          sessionStorage.setItem(this.currentLocation +"timeslotsNextDay", JSON.stringify(this.timeslots));
           this.router.navigateByUrl('/nextdate');
         }
       }
       this.timeslotForm.reset();
     } else {
-      this.timeslots = JSON.parse(sessionStorage.getItem("timeslots"));
+      this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation +"timeslots"));
       for (let timeslot of this.timeslots) {
         if (timeslot.id == this.id) {
           this.amount = appointmentData.amount;
           var total = timeslot.slots + this.amount;
           timeslot.slots = total;
           this.timeslots[this.id] = timeslot;
-          sessionStorage.setItem("timeslots", JSON.stringify(this.timeslots));
+          sessionStorage.setItem(this.currentLocation +"timeslots", JSON.stringify(this.timeslots));
           this.router.navigateByUrl('/calendar');
         }
       }

@@ -1,6 +1,13 @@
 <h2>Slots available on {{currentDate | date:'dd-MM-yyyy'}}</h2>
-<button (click)="mySchedule()" style="margin-left: 15%; margin-bottom: 2%;" >My schedule</button>
-<button (click)="tommorrow()" style="margin-left: 15%; margin-bottom: 2%;" >{{tommorrowsDate | date:'dd-MM-yyyy'}}</button>
+<button (click)="mySchedule()" style="margin-left: 15%; margin-bottom: 2%;">My schedule</button>
+
+<select [(ngModel)]="location" (change)="onChange()">
+  <option value="" disabled selected>select a location</option>
+  <option *ngFor="let item of locationlist" [value]="item">{{item}}</option>
+</select>
+
+<button (click)="tommorrow()"style="margin-left: 15%; margin-bottom: 2%;">{{tommorrowsDate | date:'dd-MM-yyyy'}}</button>
+
 <table>
   <tr>
     <th>Timeslot</th>
@@ -9,14 +16,16 @@
     <th>Add slots</th>
     <th>Details</th>
   </tr>
-    <tr *ngFor="let item of timeslots">
-      <td>{{item.timePeriod}}</td>
-      <td *ngIf="item.slots >=4" class="high">{{item.slots}}</td>
-      <td *ngIf="item.slots <4 && item.slots >0" class="medium">{{item.slots}}</td>
-      <td *ngIf="item.slots == 0" class="zero">{{item.slots}}</td>
-      <!-- <td *ngIf="item.slots >0 && 4 > items.slots" class="medium">{{item.slots}}</td> -->
-      <td><button [disabled]="item.slots == 0" (click)="reserveAppointment(item.id)">Reserve</button></td>
-      <td><button  (click)="addSlots(item.id)">Add </button></td>
-      <td><button  (click)="appointmentDetails(item.id)">Details</button></td>
-    </tr>
+  <tr *ngFor="let item of timeslots">
+    <td>{{item.timePeriod}}</td>
+    <td *ngIf="item.slots >=4" class="high">{{item.slots}}</td>
+    <td *ngIf="item.slots <4 && item.slots >0" class="medium">{{item.slots}}</td>
+    <td *ngIf="item.slots == 0" class="zero">{{item.slots}}</td>
+    <!-- <td *ngIf="item.slots >0 && 4 > items.slots" class="medium">{{item.slots}}</td> -->
+    <td><button [disabled]="item.slots == 0" (click)="reserveAppointment(item.id)">Reserve</button></td>
+    <td><button (click)="addSlots(item.id)">Add </button></td>
+    <td><button (click)="appointmentDetails(item.id)">Details</button></td>
+  </tr>
 </table>
+
+

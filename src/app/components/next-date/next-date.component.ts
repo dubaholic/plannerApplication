@@ -18,6 +18,7 @@ export class NextDateComponent implements OnInit {
     private router: Router
   ) { }
 
+  currentLocation: any;
   timeslots: any[] = [];
   currentDate: any;
   yesterdayDate: any;
@@ -67,15 +68,16 @@ export class NextDateComponent implements OnInit {
   }
 
   getAllTimeslots(id: any) {
+    this.currentLocation = sessionStorage.getItem("location");
     this.currentDate.setDate(this.currentDate.getDate());
     // var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
-    this.timeslots = JSON.parse(sessionStorage.getItem("timeslotsNextDay"));
+    this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation + "timeslotsNextDay"));
     // this.timeslots = JSON.parse(sessionStorage.getItem(formattedDate));
     if (this.timeslots == null) {
       this.timeslots = [];
       this.timeSloteService.getJSON().subscribe(data => {
         this.timeslots = data;
-        sessionStorage.setItem("timeslotsNextDay", JSON.stringify(this.timeslots));
+        sessionStorage.setItem(this.currentLocation + "timeslotsNextDay", JSON.stringify(this.timeslots));
         // sessionStorage.setItem(formattedDate, JSON.stringify(this.timeslots));
       })
     }
@@ -84,6 +86,11 @@ export class NextDateComponent implements OnInit {
   addSlots(id: any) {
     var nextDate = "nextdate"
     this.router.navigateByUrl('/addtimeslot/'+ nextDate + "/" +id);
+  }
+
+  mySchedule(){
+    var username = sessionStorage.getItem("username");
+    this.router.navigateByUrl('/myschedule/'+username);
   }
 
 }
