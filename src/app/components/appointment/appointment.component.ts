@@ -73,14 +73,14 @@ export class AppointmentComponent implements OnInit {
           this.personalAppointments.push(timeslot.timePeriod);
           sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem(username + this.currentLocation, JSON.stringify(this.personalAppointments));
-          // this.router.navigateByUrl('/nextdate');
+          this.router.navigateByUrl('/nextdate');
         } else {
           this.appointments.push(temp);
           this.personalAppointments.push(timeslot.timePeriod);
           sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem(this.currentLocation + "timeslots", JSON.stringify(this.timeslots));
           sessionStorage.setItem(username + this.currentLocation, JSON.stringify(this.personalAppointments));
-          // this.router.navigateByUrl('/calendar');
+          this.router.navigateByUrl('/calendar');
         }
       }
     }
