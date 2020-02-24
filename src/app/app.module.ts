@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppointmentdetailsComponent } from './components/appointmentdetails/appointmentdetails.component';
 import { NextDateComponent } from './components/next-date/next-date.component';
 import { AddtimeslotComponent } from './components/addtimeslot/addtimeslot.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AddtimeslotComponent } from './components/addtimeslot/addtimeslot.compo
     AppointmentComponent,
     AppointmentdetailsComponent,
     NextDateComponent,
-    AddtimeslotComponent
+    AddtimeslotComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

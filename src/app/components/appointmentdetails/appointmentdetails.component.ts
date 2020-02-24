@@ -24,30 +24,32 @@ export class AppointmentdetailsComponent implements OnInit {
   passedDate: any;
 
   ngOnInit() {
-    this.currentDate = new Date();
+    // this.currentDate = new Date();
     this.id = this.route.snapshot.paramMap.get("id");
-    this.passedDate = this.route.snapshot.paramMap.get("date");
-    const day = this.passedDate.substr(0,2);
-    const month = this.passedDate.substr(3,2) -1;
-    const year = this.passedDate.substr(6,4);
+    // this.passedDate = this.route.snapshot.paramMap.get("date");
+    // const day = this.passedDate.substr(0,2);
+    // const month = this.passedDate.substr(3,2) -1;
+    // const year = this.passedDate.substr(6,4);
 
-    this.currentDate = new Date(year, month, day);
-    var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
-    this.appointments = JSON.parse(sessionStorage.getItem(formattedDate));
-    // this.appointments = JSON.parse(sessionStorage.getItem("timeslots"));
-    console.log(this.appointments);
+    // this.currentDate = new Date(year, month, day);
+    // var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
+    // this.appointments = JSON.parse(sessionStorage.getItem(formattedDate));
+    // // this.appointments = JSON.parse(sessionStorage.getItem("timeslots"));
+    // console.log(this.appointments);
     this.getTimeslotDetails();
   }
 
   getTimeslotDetails() {
-    var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
-    this.timeslots = JSON.parse(sessionStorage.getItem(formattedDate));
-    // this.timeslots = JSON.parse(sessionStorage.getItem("timeslots"));
-    for(let timeslot of this.timeslots) {
-      if(timeslot.id == this.id) {
-        this.timeslot = timeslot.timePeriod;
-      }
-    }
+    // var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
+    // this.timeslots = JSON.parse(sessionStorage.getItem(formattedDate));
+    // // this.timeslots = JSON.parse(sessionStorage.getItem("timeslots"));
+    // for(let timeslot of this.timeslots) {
+    //   if(timeslot.id == this.id) {
+    //     this.timeslot = timeslot.timePeriod;
+    //   }
+    // }
+    this.appointments = JSON.parse(sessionStorage.getItem(this.id));
+    console.log(this.appointments);
   }
 
   toCalendar() {

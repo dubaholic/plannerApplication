@@ -5,10 +5,12 @@ import { AppointmentComponent } from './components/appointment/appointment.compo
 import { AppointmentdetailsComponent } from './components/appointmentdetails/appointmentdetails.component';
 import { NextDateComponent } from './components/next-date/next-date.component';
 import { AddtimeslotComponent } from './components/addtimeslot/addtimeslot.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/calendar', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'calendar', component: CalendarComponent },
   { path: 'calendar/:id', component: AppointmentComponent },
   { path: 'appointment/:id', component: AppointmentdetailsComponent },
