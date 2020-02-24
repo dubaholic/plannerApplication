@@ -20,6 +20,8 @@ export class AppointmentComponent implements OnInit {
   timeslotsNextDay: any = [];
   pipe = new DatePipe('en-US');
 
+  personalAppointments: any = [];
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -42,6 +44,7 @@ export class AppointmentComponent implements OnInit {
   }
 
   onSubmit(appointmentData) {
+    var username = sessionStorage.getItem("username");
     this.id = this.route.snapshot.paramMap.get("id");
     this.appointmentDetails = [];
     this.appointments = JSON.parse(sessionStorage.getItem(this.id));
@@ -55,14 +58,18 @@ export class AppointmentComponent implements OnInit {
         if (this.router.url == '/nextdate/' + this.id) {
           sessionStorage.setItem("timeslotsNextDay", JSON.stringify(this.timeslots));
           this.appointments.push(appointmentData);
+          this.personalAppointments.push(timeslot.timePeriod);
           console.log(this.appointments);
           sessionStorage.setItem(this.id, JSON.stringify(this.appointments));
+          sessionStorage.setItem(username, JSON.stringify(this.personalAppointments));
           this.router.navigateByUrl('/nextdate');
         } else {
           this.appointments.push(appointmentData);
+          this.personalAppointments.push(timeslot.timePeriod);
           console.log(this.appointments);
           sessionStorage.setItem(this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem("timeslots", JSON.stringify(this.timeslots));
+          sessionStorage.setItem(username, JSON.stringify(this.personalAppointments));
           this.router.navigateByUrl('/calendar');
         }
       }

@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(loginData) {
     if (loginData.username == 'admin' && loginData.password == "test") {
+      sessionStorage.setItem("username", loginData.username);
       this.router.navigateByUrl('/calendar');
     } 
   }

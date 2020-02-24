@@ -6,6 +6,7 @@ import { AppointmentdetailsComponent } from './components/appointmentdetails/app
 import { NextDateComponent } from './components/next-date/next-date.component';
 import { AddtimeslotComponent } from './components/addtimeslot/addtimeslot.component';
 import { LoginComponent } from './components/login/login.component';
+import { MyscheduleComponent } from './components/myschedule/myschedule.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'nextdate/:id', component: AppointmentComponent},
   {path: 'addtimeslot/:id', component: AddtimeslotComponent},
   {path: 'addtimeslot/:nextdate/:id', component: AddtimeslotComponent},
+  {path: 'myschedule/:username', component: MyscheduleComponent},
   // { path: 'nextdate/:date/:id', component: AppointmentComponent },
 ];
 

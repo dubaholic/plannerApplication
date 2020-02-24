@@ -35,6 +35,7 @@ export class CalendarComponent implements OnInit {
     }
 
   reserveAppointment(id: any) {
+    console.log(this.currentDate);
     this.router.navigateByUrl('/calendar/' + id);
   }
 
@@ -60,6 +61,11 @@ export class CalendarComponent implements OnInit {
 
   addSlots(id: any) {
     this.router.navigateByUrl('/addtimeslot/'+id);
+  }
+  
+  mySchedule(){
+    var username = sessionStorage.getItem("username");
+    this.router.navigateByUrl('/myschedule/'+username);
   }
   // tommorrow() {
   //   this.currentDate.setDate(this.currentDate.getDate() + 1);

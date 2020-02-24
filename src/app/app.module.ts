@@ -12,6 +12,7 @@ import { AppointmentdetailsComponent } from './components/appointmentdetails/app
 import { NextDateComponent } from './components/next-date/next-date.component';
 import { AddtimeslotComponent } from './components/addtimeslot/addtimeslot.component';
 import { LoginComponent } from './components/login/login.component';
+import { MyscheduleComponent } from './components/myschedule/myschedule.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './components/login/login.component';
     AppointmentdetailsComponent,
     NextDateComponent,
     AddtimeslotComponent,
-    LoginComponent
+    LoginComponent,
+    MyscheduleComponent
   ],
   imports: [
     BrowserModule,
