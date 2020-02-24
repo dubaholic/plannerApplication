@@ -3,10 +3,12 @@
   <tr>
     <th>license Plate</th>
     <th>Company</th>
+    <th>Transport reference</th>
   </tr>
     <tr *ngFor="let item of appointments">
       <td>{{item.licensePlate}}</td>
       <td>{{item.company}}</td>
+      <td>{{item.transportReference}}</td>
     </tr>
 </table>
 <button  (click)="toCalendar()">Back</button>

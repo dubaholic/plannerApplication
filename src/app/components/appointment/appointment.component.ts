@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-appointment',
@@ -50,6 +51,8 @@ export class AppointmentComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get("id");
     this.personalAppointments = JSON.parse(sessionStorage.getItem(username + this.currentLocation));
     this.appointmentDetails = [];
+    var temp = {"licensePlate": appointmentData.licensePlate, "company": appointmentData.company, "transportReference": uuidv4()};
+    console.log(temp);
     this.appointments = JSON.parse(sessionStorage.getItem(this.currentLocation + this.id));
     if(this.appointments == null) {
       this.appointments = [];
@@ -61,26 +64,23 @@ export class AppointmentComponent implements OnInit {
       this.personalAppointments = [];
     }
     for (let timeslot of this.timeslots) {
-      console.log(this.timeslots);
       if (timeslot.id == this.id) {
         timeslot.slots--;
         this.timeslots[this.id] = timeslot;
         if (this.router.url == '/nextdate/' + this.id) {
           sessionStorage.setItem(this.currentLocation + "timeslotsNextDay", JSON.stringify(this.timeslots));
-          this.appointments.push(appointmentData);
+          this.appointments.push(temp);
           this.personalAppointments.push(timeslot.timePeriod);
-          console.log(this.appointments);
           sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem(username + this.currentLocation, JSON.stringify(this.personalAppointments));
-          this.router.navigateByUrl('/nextdate');
+          // this.router.navigateByUrl('/nextdate');
         } else {
-          this.appointments.push(appointmentData);
+          this.appointments.push(temp);
           this.personalAppointments.push(timeslot.timePeriod);
-          console.log(this.appointments);
           sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem(this.currentLocation + "timeslots", JSON.stringify(this.timeslots));
           sessionStorage.setItem(username + this.currentLocation, JSON.stringify(this.personalAppointments));
-          this.router.navigateByUrl('/calendar');
+          // this.router.navigateByUrl('/calendar');
         }
       }
     }
