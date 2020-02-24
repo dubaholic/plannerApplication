@@ -25,6 +25,13 @@ export class NextDateComponent implements OnInit {
   tommorrowDate: any;
   id: any = [];
   passedDate: any;
+  location: any =[];
+  locationlist: any = [
+    "location1",
+    "location2",
+    "location3",
+    "location4",
+  ]
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
@@ -39,7 +46,7 @@ export class NextDateComponent implements OnInit {
     this.currentDate.setDate(this.currentDate.getDate() + 2);
     this.yesterdayDate.setDate(this.currentDate.getDate() - 1);
     this.tommorrowDate.setDate(this.currentDate.getDate() + 1);
-    this.getAllTimeslots(this.id);
+    this.getAllTimeslots();
   }
 
   reserveAppointment(id: any) {
@@ -67,7 +74,7 @@ export class NextDateComponent implements OnInit {
     this.router.navigateByUrl('/nextdate');
   }
 
-  getAllTimeslots(id: any) {
+  getAllTimeslots() {
     this.currentLocation = sessionStorage.getItem("location");
     this.currentDate.setDate(this.currentDate.getDate());
     // var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
@@ -81,6 +88,11 @@ export class NextDateComponent implements OnInit {
         // sessionStorage.setItem(formattedDate, JSON.stringify(this.timeslots));
       })
     }
+  }
+
+  onChange() {
+    sessionStorage.setItem("location", this.location);
+    this.getAllTimeslots();
   }
 
   addSlots(id: any) {
