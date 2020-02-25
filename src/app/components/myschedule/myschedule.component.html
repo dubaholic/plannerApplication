@@ -1,9 +1,11 @@
 <table>
     <tr>
       <th>Timeslot for {{currentLocation}} </th>
+      <th>Transport reference </th>
     </tr>
       <tr *ngFor="let item of timeslots">
-        <td>{{item}}</td>
+        <td>{{item.timeslot}}</td>
+        <td>{{item.transport}}</td>
       </tr>
   </table>
   <br>

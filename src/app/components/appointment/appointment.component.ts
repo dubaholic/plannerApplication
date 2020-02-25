@@ -46,12 +46,16 @@ export class AppointmentComponent implements OnInit {
   }
 
   onSubmit(appointmentData) {
+    var transportReference = uuidv4();
     var username = sessionStorage.getItem("username");
     this.currentLocation = sessionStorage.getItem("location");
+    if(this.currentLocation == null) {
+      this.currentLocation = "location1";
+    }
     this.id = this.route.snapshot.paramMap.get("id");
     this.personalAppointments = JSON.parse(sessionStorage.getItem(username + this.currentLocation));
     this.appointmentDetails = [];
-    var temp = {"licensePlate": appointmentData.licensePlate, "company": appointmentData.company, "transportReference": uuidv4()};
+    var temp = {"licensePlate": appointmentData.licensePlate, "company": appointmentData.company, "transportReference": transportReference};
     console.log(temp);
     this.appointments = JSON.parse(sessionStorage.getItem(this.currentLocation + this.id));
     if(this.appointments == null) {
@@ -70,13 +74,13 @@ export class AppointmentComponent implements OnInit {
         if (this.router.url == '/nextdate/' + this.id) {
           sessionStorage.setItem(this.currentLocation + "timeslotsNextDay", JSON.stringify(this.timeslots));
           this.appointments.push(temp);
-          this.personalAppointments.push(timeslot.timePeriod);
+          this.personalAppointments.push({timeslot: timeslot.timePeriod, transport: transportReference});
           sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem(username + this.currentLocation, JSON.stringify(this.personalAppointments));
           this.router.navigateByUrl('/nextdate');
         } else {
           this.appointments.push(temp);
-          this.personalAppointments.push(timeslot.timePeriod);
+          this.personalAppointments.push({timeslot: timeslot.timePeriod, transport: transportReference});
           sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem(this.currentLocation + "timeslots", JSON.stringify(this.timeslots));
           sessionStorage.setItem(username + this.currentLocation, JSON.stringify(this.personalAppointments));
