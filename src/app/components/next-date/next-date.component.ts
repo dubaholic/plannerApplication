@@ -109,6 +109,11 @@ export class NextDateComponent implements OnInit {
     this.router.navigateByUrl('/myschedule/'+username);
   }
 
+  logout() {
+    sessionStorage.clear();
+    this.router.navigateByUrl('/');
+  }
+
   permissionCheck() {
     var username = sessionStorage.getItem("username");
     if(username == 'admin') {

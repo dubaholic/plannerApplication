@@ -100,6 +100,11 @@ export class CalendarComponent implements OnInit {
       return false;
     }
   }
+
+  logout() {
+    sessionStorage.clear();
+    this.router.navigateByUrl('/');
+  }
   // tommorrow() {
   //   this.currentDate.setDate(this.currentDate.getDate() + 1);
   //   var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
