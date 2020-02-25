@@ -40,6 +40,7 @@ export class CalendarComponent implements OnInit {
     this.location = sessionStorage.getItem("location");
     if(this.location == null) {
       this.location = "location1";
+      sessionStorage.setItem("location", "location1");
     }
     this.currentDate.setDate(this.currentDate.getDate() + 1);
     sessionStorage.setItem('currentDate', this.currentDate);

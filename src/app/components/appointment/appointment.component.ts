@@ -53,12 +53,10 @@ export class AppointmentComponent implements OnInit {
     this.currentDate.setDate(this.currentDate.getDate() + 1);
     this.tommorrowsDate = new Date();
     this.tommorrowsDate.setDate(this.currentDate.getDate() + 1);
-    console.log(this.currentDate);
-    console.log(this.tommorrowsDate);
-
   }
 
   onSubmit(appointmentData) {
+    console.log(this.timeslots);
     var transportReference = uuidv4();
     var username = sessionStorage.getItem("username");
     this.currentLocation = sessionStorage.getItem("location");
@@ -73,13 +71,11 @@ export class AppointmentComponent implements OnInit {
     if(this.appointments == null) {
       this.appointments = [];
     }
-    if(this.currentLocation == null) {
-      this.currentLocation = "location1";
-    }
     if(this.personalAppointments == null) {
       this.personalAppointments = [];
     }
     for (let timeslot of this.timeslots) {
+      
       if (timeslot.id == this.id) {
         timeslot.slots--;
         this.timeslots[this.id] = timeslot;
