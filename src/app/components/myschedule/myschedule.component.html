@@ -1,11 +1,15 @@
 <table>
     <tr>
-      <th>Timeslot for {{currentLocation}} </th>
+      <th>Timeslot</th>
       <th>Transport reference </th>
+      <th>License plate </th>
+      <th>Location </th>
     </tr>
       <tr *ngFor="let item of timeslots">
         <td>{{item.timeslot}}</td>
-        <td>{{item.transport}}</td>
+        <td>{{item.appointment.transportReference}}</td>
+        <td>{{item.appointment.licensePlate}}</td>
+        <td>{{item.location}}</td>
       </tr>
   </table>
   <br>

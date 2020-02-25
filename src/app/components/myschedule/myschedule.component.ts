@@ -20,7 +20,7 @@ export class MyscheduleComponent implements OnInit {
   ngOnInit() {
     this.username = this.route.snapshot.paramMap.get("username");
     this.currentLocation = sessionStorage.getItem("location");
-    this.timeslots = JSON.parse(sessionStorage.getItem(this.username + this.currentLocation));
+    this.timeslots = JSON.parse(sessionStorage.getItem(this.username));
     console.log(this.timeslots);
   }
 

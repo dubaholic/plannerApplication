@@ -37,7 +37,10 @@ export class CalendarComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get("id");
     this.currentDate = new Date();
     this.tommorrowsDate = new Date();
-    this.location = "location1";
+    this.location = sessionStorage.getItem("location");
+    if(this.location == null) {
+      this.location = "location1";
+    }
     this.currentDate.setDate(this.currentDate.getDate() + 1);
     sessionStorage.setItem('currentDate', this.currentDate);
     this.tommorrowsDate.setDate(this.currentDate.getDate() + 1);
