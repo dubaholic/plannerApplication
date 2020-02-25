@@ -37,6 +37,7 @@ export class CalendarComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get("id");
     this.currentDate = new Date();
     this.tommorrowsDate = new Date();
+    this.location = "location1";
     this.currentDate.setDate(this.currentDate.getDate() + 1);
     sessionStorage.setItem('currentDate', this.currentDate);
     this.tommorrowsDate.setDate(this.currentDate.getDate() + 1);
@@ -84,6 +85,16 @@ export class CalendarComponent implements OnInit {
   onChange() {
     sessionStorage.setItem("location", this.location);
     this.getAllTimeslots();
+  }
+
+  permissionCheck() {
+    var username = sessionStorage.getItem("username");
+    if(username == 'admin') {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
   // tommorrow() {
   //   this.currentDate.setDate(this.currentDate.getDate() + 1);

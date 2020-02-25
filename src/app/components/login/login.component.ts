@@ -28,5 +28,9 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("username", loginData.username);
       this.router.navigateByUrl('/calendar');
     } 
+    if(loginData.username == 'user' && loginData.password == "test") {
+      sessionStorage.setItem("username", loginData.username);
+      this.router.navigateByUrl('/calendar');
+    }
   }
 }

@@ -36,6 +36,9 @@ export class AppointmentComponent implements OnInit {
 
   ngOnInit() {
     this.currentLocation = sessionStorage.getItem("location");
+    if(this.currentLocation == null) {
+      this.currentLocation = "location1";
+    }
     this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation + "timeslots"));
     this.id = this.route.snapshot.paramMap.get("id");
     if (this.router.url == '/nextdate/' + this.id) {
