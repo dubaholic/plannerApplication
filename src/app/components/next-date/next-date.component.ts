@@ -39,7 +39,11 @@ export class NextDateComponent implements OnInit {
     // const day = this.passedDate.substr(0,2);
     // const month = this.passedDate.substr(3,2) -1;
     // const year = this.passedDate.substr(6,4);
-
+    this.location = sessionStorage.getItem("location");
+    if(this.location == null) {
+      this.location = "location1";
+      sessionStorage.setItem("location", "location1");
+    }
     this.currentDate = new Date();
     this.yesterdayDate = new Date();
     this.tommorrowDate = new Date();

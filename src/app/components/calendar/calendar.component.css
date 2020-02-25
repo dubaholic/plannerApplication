@@ -1,16 +1,17 @@
-table, th , td {
+table, th , td, h2 {
     border: 1px solid hsl(185, 84%, 15%);
     border-collapse: collapse;
     padding: 5px;
     text-align: center;
+    color: hsl(185, 84%, 15%);
   }
   
   table tr:nth-child(odd) {
-    background-color: #446a6e;
+    background-color: #f1f1f1;
   }
   
   table tr:nth-child(even) {
-    background-color: #5f8d91;
+    background-color: #ffffff;
   }
 
   table, h2 {
@@ -22,17 +23,33 @@ table, th , td {
   button {
     margin-left: 15%;
     margin-right: 15%;
-
+    color: hsl(185, 84%, 15%)
   }
 
   .zero {
+    color: black;
     background-color: #823a37;
   }
 
   .medium {
+    color: black;
     background-color: #a17e10;
   }
 
   .high {
+    color: black ;
     background-color: #3e694b ;
+  }
+
+  select {
+    color: hsl(185, 84%, 15%);
+  }
+
+  h2 {
+    border: 1px solid hsl(185, 84%, 15%);
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+    color: white;
+    background-color: hsl(185, 84%, 15%);
   }

@@ -1,11 +1,11 @@
 <h2>Slots available on {{currentDate | date:'dd-MM-yyyy'}}</h2>
-<button (click)="yesterday()" >{{yesterdayDate | date:'dd-MM-yyyy'}}</button>
-<button (click)="mySchedule()" >My schedule</button>
+<button mat-stroked-button (click)="yesterday()" >{{yesterdayDate | date:'dd-MM-yyyy'}}</button>
+<button mat-stroked-button (click)="mySchedule()" >My schedule</button>
 <select [(ngModel)]="location" (change)="onChange()">
   <option value="" disabled selected>select a location</option>
   <option *ngFor="let item of locationlist" [value]="item">{{item}}</option>
 </select>
-<button (click)="tommorrow()" >{{tommorrowDate | date:'dd-MM-yyyy'}}</button>
+<button mat-stroked-button (click)="tommorrow()" >{{tommorrowDate | date:'dd-MM-yyyy'}}</button>
 <table>
   <tr>
     <th>Timeslot</th>
@@ -20,8 +20,8 @@
       <td *ngIf="item.slots <4 && item.slots >0" class="medium">{{item.slots}}</td>
       <td *ngIf="item.slots == 0" class="zero">{{item.slots}}</td>
       <!-- <td>{{item.slots}}</td> -->
-      <td><button [disabled]="item.slots == 0" (click)="reserveAppointment(item.id)">Reserve</button></td>
-      <td [hidden]="!permissionCheck()"><button (click)="addSlots(item.id)">Add </button></td>
-      <td [hidden]="!permissionCheck()"><button (click)="appointmentDetails(item.id)">Details</button></td>
+      <td><button mat-stroked-button [disabled]="item.slots == 0" (click)="reserveAppointment(item.id)">Reserve</button></td>
+      <td [hidden]="!permissionCheck()"><button mat-stroked-button (click)="addSlots(item.id)">Add </button></td>
+      <td [hidden]="!permissionCheck()"><button mat-stroked-button (click)="appointmentDetails(item.id)">Details</button></td>
     </tr>
 </table>

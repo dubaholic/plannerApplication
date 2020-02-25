@@ -1,3 +1,4 @@
+<h2>Change capacity</h2>
 <table>
   <tr>
     <th>Timeslot</th>
@@ -12,11 +13,11 @@
 <div class="container" style="margin-top: 2%;">
   <form [formGroup]="timeslotForm" (ngSubmit)="onSubmit(timeslotForm.value)">
     <div class="form-group">
-      <label for="amount">
-        Number of slots
+      <label for="amount" style="margin-right: 2%;">
+        Number of slots:
       </label>
-      <input id="amount" type="number" formControlName="amount">
+      <input matInput id="amount" type="number" formControlName="amount">
+      <button mat-stroked-button type="submit">Submit</button>
     </div>
-  <button type="submit">Submit</button>
   </form>
 </div>

@@ -13,6 +13,10 @@ import { NextDateComponent } from './components/next-date/next-date.component';
 import { AddtimeslotComponent } from './components/addtimeslot/addtimeslot.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyscheduleComponent } from './components/myschedule/myschedule.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { MyscheduleComponent } from './components/myschedule/myschedule.componen
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-    FormsModule  
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatInputModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

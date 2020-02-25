@@ -1,4 +1,4 @@
-<h2>Appointments on </h2>
+<h2>Appointments on {{currentLocation}} </h2>
 <table>
   <tr>
     <th>license Plate</th>
@@ -11,4 +11,4 @@
       <td>{{item.transportReference}}</td>
     </tr>
 </table>
-<button  (click)="toCalendar()">Back</button>
+<button mat-stroked-button (click)="toCalendar()">Back</button>

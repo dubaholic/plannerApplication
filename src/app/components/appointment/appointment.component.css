@@ -1,13 +1,47 @@
-table, th , td {
-    border: 1px solid grey;
-    border-collapse: collapse;
-    padding: 5px;
-  }
-  
-  table tr:nth-child(odd) {
-    background-color: #f1f1f1;
-  }
-  
-  table tr:nth-child(even) {
-    background-color: #ffffff;
+table, th , td, h2 {
+  border: 1px solid hsl(185, 84%, 15%);
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
+  color: hsl(185, 84%, 15%);
+}
+
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+table, h2 {
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 50%;
+}
+
+button {
+  margin-left: 15%;
+  color: hsl(185, 84%, 15%)
+}
+
+input {
+  margin-left: 2%;
+}
+select {
+  color: hsl(185, 84%, 15%);
+}
+
+h2 {
+  border: 1px solid hsl(185, 84%, 15%);
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
+  color: white;
+  background-color: hsl(185, 84%, 15%);
+}
+
+label {
+  color: hsl(185, 84%, 15%);
+  margin-left: 15%;
   }

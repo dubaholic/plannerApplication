@@ -1,38 +1,57 @@
-table, th , td {
-    border: 1px solid grey;
-    border-collapse: collapse;
-    padding: 5px;
-    text-align: center;
-  }
-  
-  table tr:nth-child(odd) {
-    background-color: #f1f1f1;
-  }
-  
-  table tr:nth-child(even) {
-    background-color: #ffffff;
-  }
+table, th , td, h2 {
+  border: 1px solid hsl(185, 84%, 15%);
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
+  color: hsl(185, 84%, 15%);
+}
 
-  table, h2 {
-    margin-left: 15%;
-    margin-right: 15%;
-    width: 50%;
-  }
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
 
-  button {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 2%;
-  }
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
 
-  .zero {
-    background-color: red;
-  }
+table, h2 {
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 50%;
+}
 
-  .medium {
-    background-color: orange;
-  }
+/* button {
+  margin-left: 10%;
+  margin-bottom: 2%;
+  color: hsl(185, 84%, 15%)
+} */
 
-  .high {
-    background-color: greenyellow ;
-  }
+.zero {
+  color: black;
+  background-color: #823a37;
+}
+
+.medium {
+  color: black;
+  background-color: #a17e10;
+}
+
+.high {
+  color: black ;
+  background-color: #3e694b ;
+}
+
+select, button {
+  margin-left: 11%;
+  margin-bottom: 2%;
+  color: hsl(185, 84%, 15%);
+}
+
+h2 {
+  border: 1px solid hsl(185, 84%, 15%);
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
+  color: white;
+  background-color: hsl(185, 84%, 15%);
+}
