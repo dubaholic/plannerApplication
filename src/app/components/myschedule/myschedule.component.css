@@ -1,38 +1,26 @@
 table, th , td {
-    border: 1px solid grey;
-    border-collapse: collapse;
-    padding: 5px;
-    text-align: center;
-  }
-  
-  table tr:nth-child(odd) {
-    background-color: #f1f1f1;
-  }
-  
-  table tr:nth-child(even) {
-    background-color: #ffffff;
-  }
+  border: 1px solid hsl(185, 84%, 15%);
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
+}
 
-  table, h2 {
-    margin-left: 15%;
-    margin-right: 15%;
-    width: 50%;
-  }
+table tr:nth-child(odd) {
+  background-color: #446a6e;
+}
 
-  button {
-    margin-left: 15%;
-    margin-right: 15%;
+table tr:nth-child(even) {
+  background-color: #5f8d91;
+}
 
-  }
+table, h2 {
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 50%;
+}
 
-  .zero {
-    background-color: red;
-  }
+button {
+  margin-left: 15%;
+  margin-right: 15%;
 
-  .medium {
-    background-color: orange;
-  }
-
-  .high {
-    background-color: greenyellow ;
-  }
+}

@@ -22,6 +22,9 @@ export class AppointmentComponent implements OnInit {
   pipe = new DatePipe('en-US');
   currentLocation: any;
   personalAppointments: any = [];
+  
+  currentDate: any;
+  tommorrowsDate: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,6 +49,13 @@ export class AppointmentComponent implements OnInit {
     }
     this.timeslotsNextDay = JSON.parse(sessionStorage.getItem(this.currentLocation + "timeslotsNextDay"));
 
+    this.currentDate = new Date();
+    this.currentDate.setDate(this.currentDate.getDate() + 1);
+    this.tommorrowsDate = new Date();
+    this.tommorrowsDate.setDate(this.currentDate.getDate() + 1);
+    console.log(this.currentDate);
+    console.log(this.tommorrowsDate);
+
   }
 
   onSubmit(appointmentData) {
@@ -59,7 +69,6 @@ export class AppointmentComponent implements OnInit {
     this.personalAppointments = JSON.parse(sessionStorage.getItem(username));
     this.appointmentDetails = [];
     var temp = {"licensePlate": appointmentData.licensePlate, "company": appointmentData.company, "transportReference": transportReference};
-    console.log(temp);
     this.appointments = JSON.parse(sessionStorage.getItem(this.currentLocation + this.id));
     if(this.appointments == null) {
       this.appointments = [];
@@ -75,15 +84,16 @@ export class AppointmentComponent implements OnInit {
         timeslot.slots--;
         this.timeslots[this.id] = timeslot;
         if (this.router.url == '/nextdate/' + this.id) {
+          
           sessionStorage.setItem(this.currentLocation + "timeslotsNextDay", JSON.stringify(this.timeslots));
           this.appointments.push(temp);
-          this.personalAppointments.push({timeslot: timeslot.timePeriod, appointment: temp, location: this.currentLocation});
+          this.personalAppointments.push({timeslot: timeslot.timePeriod, appointment: temp, location: this.currentLocation, date: this.tommorrowsDate});
           sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem(username, JSON.stringify(this.personalAppointments));
           this.router.navigateByUrl('/nextdate');
         } else {
           this.appointments.push(temp);
-          this.personalAppointments.push({timeslot: timeslot.timePeriod, appointment: temp, location: this.currentLocation});
+          this.personalAppointments.push({timeslot: timeslot.timePeriod, appointment: temp, location: this.currentLocation, date: this.currentDate});
           sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem(this.currentLocation + "timeslots", JSON.stringify(this.timeslots));
           sessionStorage.setItem(username, JSON.stringify(this.personalAppointments));

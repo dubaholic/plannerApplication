@@ -1,14 +1,16 @@
 <table>
     <tr>
+      <th>Date</th>
       <th>Timeslot</th>
-      <th>Transport reference </th>
       <th>License plate </th>
+      <th>Transport reference </th>
       <th>Location </th>
     </tr>
       <tr *ngFor="let item of timeslots">
+        <td>{{item.date | date : 'dd/MM/yyyy'}}</td>
         <td>{{item.timeslot}}</td>
-        <td>{{item.appointment.transportReference}}</td>
         <td>{{item.appointment.licensePlate}}</td>
+        <td>{{item.appointment.transportReference}}</td>
         <td>{{item.location}}</td>
       </tr>
   </table>
