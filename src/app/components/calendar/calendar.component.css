@@ -1,16 +1,16 @@
 table, th , td {
-    border: 1px solid grey;
+    border: 1px solid hsl(185, 84%, 15%);
     border-collapse: collapse;
     padding: 5px;
     text-align: center;
   }
   
   table tr:nth-child(odd) {
-    background-color: #f1f1f1;
+    background-color: #446a6e;
   }
   
   table tr:nth-child(even) {
-    background-color: #ffffff;
+    background-color: #5f8d91;
   }
 
   table, h2 {
@@ -26,13 +26,13 @@ table, th , td {
   }
 
   .zero {
-    background-color: red;
+    background-color: #823a37;
   }
 
   .medium {
-    background-color: orange;
+    background-color: #a17e10;
   }
 
   .high {
-    background-color: greenyellow ;
+    background-color: #3e694b ;
   }
