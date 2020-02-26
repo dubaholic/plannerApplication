@@ -10,7 +10,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentdetailsComponent } from './components/appointmentdetails/appointmentdetails.component';
 import { NextDateComponent } from './components/next-date/next-date.component';
-import { AddtimeslotComponent } from './components/addtimeslot/addtimeslot.component';
+import { AddtimeslotComponent, BelowZeroDialogComponent } from './components/addtimeslot/addtimeslot.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyscheduleComponent } from './components/myschedule/myschedule.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
     NextDateComponent,
     AddtimeslotComponent,
     LoginComponent,
-    MyscheduleComponent
+    MyscheduleComponent,
+    BelowZeroDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +44,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatSelectModule,
     MatInputModule,
-    MatIconModule  
+    MatIconModule,
+    MatDialogModule , 
   ],
+  entryComponents: [BelowZeroDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
