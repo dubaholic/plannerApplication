@@ -78,6 +78,7 @@ export class AppointmentComponent implements OnInit {
       
       if (timeslot.id == this.id) {
         timeslot.slots--;
+        timeslot.reserved++;
         this.timeslots[this.id] = timeslot;
         if (this.router.url == '/nextdate/' + this.id) {
           
