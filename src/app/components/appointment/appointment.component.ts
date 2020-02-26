@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
 import { v4 as uuidv4 } from 'uuid';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-appointment',
@@ -22,6 +23,7 @@ export class AppointmentComponent implements OnInit {
   pipe = new DatePipe('en-US');
   currentLocation: any;
   personalAppointments: any = [];
+  transportReference: any;
   
   currentDate: any;
   tommorrowsDate: any;
@@ -29,7 +31,8 @@ export class AppointmentComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) {
     this.appointmentForm = this.formBuilder.group({
       licensePlate: '',
@@ -57,7 +60,7 @@ export class AppointmentComponent implements OnInit {
 
   onSubmit(appointmentData) {
     console.log(this.timeslots);
-    var transportReference = uuidv4();
+    this.transportReference = uuidv4();
     var username = sessionStorage.getItem("username");
     this.currentLocation = sessionStorage.getItem("location");
     if(this.currentLocation == null) {
@@ -66,7 +69,8 @@ export class AppointmentComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get("id");
     this.personalAppointments = JSON.parse(sessionStorage.getItem(username));
     this.appointmentDetails = [];
-    var temp = {"licensePlate": appointmentData.licensePlate, "company": appointmentData.company, "transportReference": transportReference};
+    var temp = {"licensePlate": appointmentData.licensePlate, "company": appointmentData.company, "transportReference": this.transportReference};
+    sessionStorage.setItem("transsportReference", JSON.stringify(this.transportReference));
     this.appointments = JSON.parse(sessionStorage.getItem(this.currentLocation + this.id));
     if(this.appointments == null) {
       this.appointments = [];
@@ -81,12 +85,12 @@ export class AppointmentComponent implements OnInit {
         timeslot.reserved++;
         this.timeslots[this.id] = timeslot;
         if (this.router.url == '/nextdate/' + this.id) {
-          
           sessionStorage.setItem(this.currentLocation + "timeslotsNextDay", JSON.stringify(this.timeslots));
           this.appointments.push(temp);
           this.personalAppointments.push({timeslot: timeslot.timePeriod, appointment: temp, location: this.currentLocation, date: this.tommorrowsDate});
           sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem(username, JSON.stringify(this.personalAppointments));
+          this.openDialog();
           this.router.navigateByUrl('/nextdate');
         } else {
           this.appointments.push(temp);
@@ -94,6 +98,7 @@ export class AppointmentComponent implements OnInit {
           sessionStorage.setItem(this.currentLocation + this.id, JSON.stringify(this.appointments));
           sessionStorage.setItem(this.currentLocation + "timeslots", JSON.stringify(this.timeslots));
           sessionStorage.setItem(username, JSON.stringify(this.personalAppointments));
+          this.openDialog();
           this.router.navigateByUrl('/calendar');
         }
       }
@@ -106,4 +111,27 @@ export class AppointmentComponent implements OnInit {
     this.router.navigateByUrl('/calendar');
   }
 
+  openDialog() {
+    this.dialog.open(TransportReferenceDialogComponent, {
+      hasBackdrop: false,
+    });
+  }
+
+}
+
+@Component({
+  selector: 'dialog-transport-reference',
+  templateUrl: 'dialog-transport-reference.html',
+})
+export class TransportReferenceDialogComponent {
+
+  transportReference: any = JSON.parse(sessionStorage.getItem("transsportReference"))
+
+  constructor(
+    public dialogRef: MatDialogRef<TransportReferenceDialogComponent>,
+    ) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

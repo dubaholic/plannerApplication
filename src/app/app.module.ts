@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { AppointmentComponent } from './components/appointment/appointment.component';
+import { AppointmentComponent, TransportReferenceDialogComponent } from './components/appointment/appointment.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,7 +31,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     AddtimeslotComponent,
     LoginComponent,
     MyscheduleComponent,
-    BelowZeroDialogComponent
+    BelowZeroDialogComponent,
+    TransportReferenceDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatIconModule,
     MatDialogModule , 
   ],
-  entryComponents: [BelowZeroDialogComponent],
+  entryComponents: [BelowZeroDialogComponent, TransportReferenceDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

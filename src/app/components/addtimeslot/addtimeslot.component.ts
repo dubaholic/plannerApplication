@@ -58,7 +58,6 @@ export class AddtimeslotComponent implements OnInit {
   onSubmit(appointmentData) {
     this.id = this.route.snapshot.paramMap.get("id");
     var routing = this.route.snapshot.paramMap.get("nextdate");
-    console.log(routing);
     if (routing != null) {
       this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation + 'timeslotsNextDay'))
       for (let timeslot of this.timeslots) {
@@ -69,7 +68,6 @@ export class AddtimeslotComponent implements OnInit {
             this.openDialog();
           } else {
             timeslot.slots = total;
-            console.log(timeslot.slots);
             this.timeslots[this.id] = timeslot;
             sessionStorage.setItem(this.currentLocation + "timeslotsNextDay", JSON.stringify(this.timeslots));
             this.router.navigateByUrl('/nextdate');
@@ -88,7 +86,6 @@ export class AddtimeslotComponent implements OnInit {
             this.openDialog();
           } else {
             timeslot.slots = total;
-            console.log(timeslot.slots);
             this.timeslots[this.id] = timeslot;
             sessionStorage.setItem(this.currentLocation + "timeslots", JSON.stringify(this.timeslots));
             this.router.navigateByUrl('/calendar');
@@ -104,7 +101,6 @@ export class AddtimeslotComponent implements OnInit {
       hasBackdrop: false
     });
   }
-
 }
 
 @Component({
@@ -115,7 +111,6 @@ export class BelowZeroDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<BelowZeroDialogComponent>,
-    private router: Router
     ) { }
 
   onNoClick(): void {
