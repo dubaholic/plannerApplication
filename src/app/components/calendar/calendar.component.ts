@@ -12,8 +12,7 @@ import { DatePipe } from '@angular/common';
 export class CalendarComponent implements OnInit {
 
   pipe = new DatePipe('en-US');
-
-
+  
   constructor(
     private timeSloteService: TimeslotsService,
     private route: ActivatedRoute,
