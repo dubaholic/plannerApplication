@@ -35,10 +35,6 @@ export class NextDateComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
-    // this.passedDate = this.route.snapshot.paramMap.get("date");
-    // const day = this.passedDate.substr(0,2);
-    // const month = this.passedDate.substr(3,2) -1;
-    // const year = this.passedDate.substr(6,4);
     this.location = sessionStorage.getItem("location");
     if(this.location == null) {
       this.location = "location1";
@@ -55,7 +51,6 @@ export class NextDateComponent implements OnInit {
 
   reserveAppointment(id: any) {
     this.currentDate.setDate(this.currentDate.getDate());
-    // var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
     this.router.navigateByUrl('/nextdate/' + id);
   }
 
@@ -66,30 +61,23 @@ export class NextDateComponent implements OnInit {
   yesterday() {
     this.currentDate.setDate(this.currentDate.getDate() - 1);
     var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
-    // this.router.navigateByUrl('/nextdate/'+formattedDate);
     this.router.navigateByUrl('/calendar');
   }
 
   tommorrow() {
     this.currentDate.setDate(this.currentDate.getDate() + 1);
-    // var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
-    // console.log(formattedDate);
-    // sessionStorage.setItem("currentDate", formattedDate);
     this.router.navigateByUrl('/nextdate');
   }
 
   getAllTimeslots() {
     this.currentLocation = sessionStorage.getItem("location");
     this.currentDate.setDate(this.currentDate.getDate());
-    // var formattedDate = this.pipe.transform(this.currentDate, 'dd-MM-yyyy');
     this.timeslots = JSON.parse(sessionStorage.getItem(this.currentLocation + "timeslotsNextDay"));
-    // this.timeslots = JSON.parse(sessionStorage.getItem(formattedDate));
     if (this.timeslots == null) {
       this.timeslots = [];
       this.timeSloteService.getJSON().subscribe(data => {
         this.timeslots = data;
         sessionStorage.setItem(this.currentLocation + "timeslotsNextDay", JSON.stringify(this.timeslots));
-        // sessionStorage.setItem(formattedDate, JSON.stringify(this.timeslots));
       })
     }
   }

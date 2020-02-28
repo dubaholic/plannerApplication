@@ -2,8 +2,8 @@
 <table>
   <tr>
     <th>Timeslot</th>
-    <th>Number of slots</th>
-    <th>Reserved</th>
+    <th>Number of available slots</th>
+    <th>Number of reserved slots</th>
   </tr>
   <tr>
     <td>{{timeslot.timePeriod}}</td>
@@ -16,7 +16,7 @@
   <form [formGroup]="timeslotForm" (ngSubmit)="onSubmit(timeslotForm.value)">
     <div class="form-group">
       <label for="amount" style="margin-right: 2%;">
-        Increase number of slots:
+        Increase amount of slots:
       </label>
       <input matInput id="amount" type="number" formControlName="amount">
       <button mat-stroked-button type="submit">Submit</button>
