@@ -1,12 +1,22 @@
 .form-group {
     width: 25%;
     margin-left: 25%;
+    color: hsl(185, 84%, 15%);
 }
 
 button {
-    margin-left: 25%;
+    margin-left: 28%;
+    color: hsl(185, 84%, 15%);
 }
 
 h3 {
     margin-left: 25%;
+    color: hsl(185, 84%, 15%);
+}
+
+.logo {
+    width: 10%;
+    height: 10%;
+    margin-left: 28% ;
+    margin-bottom: 2%;
 }

@@ -101,7 +101,6 @@ export class CalendarComponent implements OnInit {
   }
 
   logout() {
-    sessionStorage.clear();
     this.router.navigateByUrl('/');
   }
 }

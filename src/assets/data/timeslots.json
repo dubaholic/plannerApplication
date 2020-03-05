@@ -1,38 +1,170 @@
 [
     {
         "id":0,
-        "timePeriod": "8:30 - 9:00",
+        "timePeriod": "0:00 - 1:00",
         "slots": 5,
-        "reserved": 0
+        "reserved": 0,
+        "officeHours": false
     },
     {
         "id":1,
-        "timePeriod": "9:00 - 9:30",
+        "timePeriod": "1:00 - 2:00",
         "slots": 5,
-        "reserved": 0
+        "reserved": 0,
+        "officeHours": false
     },
     {
         "id":2,
-        "timePeriod": "9:30 - 10:00",
+        "timePeriod": "2:00 - 3:00",
         "slots": 5,
-        "reserved": 0
+        "reserved": 0,
+        "officeHours": false
     },
     {
         "id":3,
-        "timePeriod": "10:00 - 10:30",
+        "timePeriod": "3:00 - 4:00",
         "slots": 5,
-        "reserved": 0
+        "reserved": 0,
+        "officeHours": false
     },
     {
         "id":4,
-        "timePeriod": "10:30 - 11:00",
+        "timePeriod": "4:00 - 5:00",
         "slots": 5,
-        "reserved": 0
+        "reserved": 0,
+        "officeHours": false
     },
     {
         "id":5,
-        "timePeriod": "11:00 - 11:30",
+        "timePeriod": "5:00 - 6:00",
         "slots": 5,
-        "reserved": 0
+        "reserved": 0,
+        "officeHours": false
+    },
+    {
+        "id":6,
+        "timePeriod": "6:00 - 7:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": false
+    },
+    {
+        "id":7,
+        "timePeriod": "7:00 - 8:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": false
+    },
+    {
+        "id":8,
+        "timePeriod": "8:00 - 9:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": true
+    },
+    {
+        "id":9,
+        "timePeriod": "9:00 - 10:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": true
+    },
+    {
+        "id":10,
+        "timePeriod": "10:00 - 11:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": true
+    },
+    {
+        "id":11,
+        "timePeriod": "11:00 - 12:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": true
+    },
+    {
+        "id":12,
+        "timePeriod": "12:00 - 13:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": true
+    },
+    {
+        "id":13,
+        "timePeriod": "13:00 - 14:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": true
+    },
+    {
+        "id":14,
+        "timePeriod": "14:00 - 15:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": true
+    },
+    {
+        "id":15,
+        "timePeriod": "15:00 - 16:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": true
+    },
+    {
+        "id":16,
+        "timePeriod": "16:00 - 17:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": true
+    },
+    {
+        "id":17,
+        "timePeriod": "17:00 - 18:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": true
+    },
+    {
+        "id":18,
+        "timePeriod": "18:00 - 19:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": false
+    },
+    {
+        "id":19,
+        "timePeriod": "19:00 - 20:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": false
+    },
+    {
+        "id":20,
+        "timePeriod": "20:00 - 21:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": false
+    },
+    {
+        "id":21,
+        "timePeriod": "21:00 - 22:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": false
+    },
+    {
+        "id":22,
+        "timePeriod": "22:00 - 23:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": false
+    },
+    {
+        "id":23,
+        "timePeriod": "23:00 - 00:00",
+        "slots": 5,
+        "reserved": 0,
+        "officeHours": false
     }
 ]

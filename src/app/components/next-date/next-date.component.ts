@@ -98,7 +98,6 @@ export class NextDateComponent implements OnInit {
   }
 
   logout() {
-    sessionStorage.clear();
     this.router.navigateByUrl('/');
   }
 

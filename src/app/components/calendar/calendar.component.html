@@ -15,8 +15,8 @@
     <th [hidden]="!permissionCheck()">Change capacity</th>
     <th [hidden]="!permissionCheck()">Details</th>
   </tr>
-  <tr *ngFor="let item of timeslots">
-    <td>{{item.timePeriod}}</td>
+  <tr *ngFor="let item of timeslots" [hidden]="!item.officeHours">
+    <td >{{item.timePeriod}}</td>
     <td *ngIf="item.slots >=4" class="high">{{item.slots}}</td>
     <td *ngIf="item.slots <4 && item.slots >0" class="medium">{{item.slots}}</td>
     <td *ngIf="item.slots == 0" class="zero">{{item.slots}}</td>
